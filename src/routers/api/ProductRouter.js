@@ -8,8 +8,6 @@ productRouter.get('/', ProductController.getAll);
 
 productRouter.get('/:id', ProductController.getById);
 
-productRouter.get('/:category', ProductController.getByCategory);
-
 productRouter.post('/', adminMiddleware, ProductController.post);
 
 productRouter.put('/', adminMiddleware, ProductController.update);
