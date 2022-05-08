@@ -4,19 +4,19 @@
         <form id="form-product">
             <div class="form-group">
                 <label>Name</label>
-                <input id="name" type="text" class="form-control" name="title" placeholder="Add Title" required>
+                <input id="name" value="{{this.name}}" type="text" class="form-control" name="title" placeholder="Add Title" required autofocus>
             </div>
             <div class="form-group">
                 <label>Price</label>
-                <input id="price" type="number" class="form-control" name="price" placeholder="Add Price" required>
+                <input id="price" value="{{this.price}}" type="number" class="form-control" name="price" placeholder="Add Price" required>
             </div>
             <div class="form-group">
                 <label>Category</label>
-                <input id="category" type="text" class="form-control" name="category" placeholder="Add Category" required>
+                <input id="category" value="{{this.category}}" type="text" class="form-control" name="category" placeholder="Add Category" required>
             </div>
             <div class="form-group">
                 <label>Thumbnail</label>
-                <input id="photo" type="text" class="form-control" name="thumbnail" placeholder="Add Thumbnail"
+                <input id="photo" value="{{this.photo}}" type="text" class="form-control" name="thumbnail" placeholder="Add Thumbnail"
                     required>
             </div>
 
