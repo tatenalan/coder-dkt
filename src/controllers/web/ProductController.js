@@ -19,10 +19,11 @@ class ProductController {
 
     getByCategory = async (req, res) => {
         ProductService.getAll().then(products => {
-            res.render("./products/category-main", {productList: products.filter(()=> products.category == req.params.category), username: req.session.username})
+            console.log(products.filter((product)=> _.isEqual(product.category, req.params.category)));
+            res.render("./categories/CategoriesMain", {productList: products.filter((product)=> _.isEqual(product.category, req.params.category)), username: req.session.username})
         }).catch(err => {
             if(err.error == 404)
-            res.render("./products/category-main", {productList: products.filter(()=> products.category == req.params.category), username: req.session.username})
+            res.render("./categories/CategoriesMain", {productList: products.filter((product)=> _.isEqual(product.category, req.params.category)), username: req.session.username})
             else{
                 res.status(err.error)
                 res.json(err)
