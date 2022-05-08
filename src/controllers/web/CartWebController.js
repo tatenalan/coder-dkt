@@ -21,8 +21,8 @@ class ProductController {
             console.log(response)
             res.render('./messagesScreen/Success', {message: response.response, idUser: req.session.idUser})
         }).catch(err => {
-            res.status(err.error)
-            res.json(err)
+            console.log(err.error)
+            res.render('./messagesScreen/Error', {message: err.error, idUser: req.session.idUser})
         })
     }
 

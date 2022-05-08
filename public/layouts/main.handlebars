@@ -12,26 +12,6 @@
 </head>
 
 <body>
-    <div class="alert alert-dark d-flex align-items-center justify-content-between" role="alert">
-        {{#if username}}
-        <a class="btn btn-secondary" href="/products/">Products</a>
-        <a class="btn btn-secondary" href="/chat/">Group Chat</a>
-        <a class="btn btn-secondary" href="/cart">Cart</a>
-        <a class="btn btn-secondary" href="/profile">Profile</a>
-        <form action="/logout" method="post">
-            <button type="submit" class="btn btn-secondary">Log out</button>
-        </form>
-        {{else}}
-        <div class="alert mt-4 d-flex align-items-center justify-content-end" role="alert">
-            <a class="btn btn-secondary" href="/login">Login</a>
-        </div>
-        {{/if}}
-    </div>
-    {{#if username}}
-    <div class="alert alert-dark mb-5 d-flex align-items-center justify-content-between" role="alert">
-        Welcome {{username}}!
-    </div>
-    {{/if}}
     {{{body}}}
 </body>
 

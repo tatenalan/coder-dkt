@@ -1,27 +1,27 @@
+{{> navBar}}
 <div class="bd-example bg-light mt-5 p-5 shadow rounded w-50 mx-auto">
-        <h5>Agregar los datos de producto</h5>
+    <h5>Agregar los datos de producto</h5>
+    <br>
+    <form id="form-product">
+        <div class="form-group">
+            <label>Name</label>
+            <input id="name" type="text" class="form-control" name="title" placeholder="Add Title" required>
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input id="price" type="number" class="form-control" name="price" placeholder="Add Price" required>
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <input id="category" type="text" class="form-control" name="category" placeholder="Add Category" required>
+        </div>
+        <div class="form-group">
+            <label>Thumbnail</label>
+            <input id="photo" type="text" class="form-control" name="thumbnail" placeholder="Add Thumbnail" required>
+        </div>
+
         <br>
-        <form id="form-product">
-            <div class="form-group">
-                <label>Name</label>
-                <input id="name" type="text" class="form-control" name="title" placeholder="Add Title" required>
-            </div>
-            <div class="form-group">
-                <label>Price</label>
-                <input id="price" type="number" class="form-control" name="price" placeholder="Add Price" required>
-            </div>
-            <div class="form-group">
-                <label>Category</label>
-                <input id="category" type="text" class="form-control" name="category" placeholder="Add Category" required>
-            </div>
-            <div class="form-group">
-                <label>Thumbnail</label>
-                <input id="photo" type="text" class="form-control" name="thumbnail" placeholder="Add Thumbnail"
-                    required>
-            </div>
+        <button id="submit" type="submit" class="btn btn-primary">Agregar Producto</button>
+    </form>
 
-            <br>
-            <button id="submit" type="submit" class="btn btn-primary">Agregar Producto</button>
-        </form>
-
-    </div>
+</div>

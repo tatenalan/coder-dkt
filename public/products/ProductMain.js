@@ -28,7 +28,23 @@ $("#form-product").submit( e => {
     createProduct()
 })
 
+$("#form-product").submit( e => {
+    e.preventDefault();
+    updateProduct()
+})
+
 function createProduct() {
+    let product = {
+        id: 0,
+        name: $("#name")[0].value,
+        price: $("#price")[0].value,
+        category: $("#category")[0].value,
+        photo: $("#photo")[0].value
+    }
+    socket.emit("newProduct", product);
+}
+
+function updateProduct() {
     let product = {
         id: 0,
         name: $("#name")[0].value,
