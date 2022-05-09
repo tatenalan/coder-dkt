@@ -19,10 +19,10 @@ class ProductController {
     addProduct = async (req, res) => {
         CartService.addProduct(req.session.idUser, req.body).then((response) => {
             console.log(response)
-            res.render('./messagesScreen/Success', {message: response.response, idUser: req.session.idUser})
+            res.render('./messagesScreen/Success', {message: response.response, username: req.session.username})
         }).catch(err => {
             console.log(err.error)
-            res.render('./messagesScreen/Error', {message: err.error, idUser: req.session.idUser})
+            res.render('./messagesScreen/Error', {message: err.error, username: req.session.username})
         })
     }
 
@@ -30,7 +30,7 @@ class ProductController {
         let subject = `Nuevo pedido de ${req.session.name}, email: ${req.session.email}`
         sendEmail(subject, await orderEmail(req.body.products)).then((response) => {
             sendWpp(subject).then((response) => { 
-                res.render('./messagesScreen/Success', {message: "Se está procesando su pedido", idUser: req.session.idUser})
+                res.render('./messagesScreen/Success', {message: "Se está procesando su pedido", username: req.session.username})
              }).catch(err => {
                 res.status(err.error)
                 res.json(err)
