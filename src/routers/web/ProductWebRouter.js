@@ -10,6 +10,8 @@ productWebRouter.get('/:category', ProductController.getByCategory);
 
 productWebRouter.post('/:id', ProductController.deleteById);
 
-productWebRouter.get('/update/:id', ProductController.getUpdate);
+productWebRouter.get('/update/:id', ProductController.edit);
+
+productWebRouter.post('/update/:id', ProductController.update);
 
 export { productWebRouter };

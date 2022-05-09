@@ -2,27 +2,28 @@
 <div class="bd-example bg-light mt-5 p-5 shadow rounded w-50 mx-auto">
         <h5>Agregar los datos de producto</h5>
         <br>
-        <form id="form-product">
+        <form id="form-product" method="post" action="/products/update/{{product.id}}">
+        <input id="id" value="{{product.id}}" type="hidden" name="id">
             <div class="form-group">
                 <label>Name</label>
-                <input id="name" value="{{this.name}}" type="text" class="form-control" name="title" placeholder="Add Title" required autofocus>
+                <input id="name" value="{{product.name}}" type="text" class="form-control" name="name" placeholder="Add Title" required autofocus>
             </div>
             <div class="form-group">
                 <label>Price</label>
-                <input id="price" value="{{this.price}}" type="number" class="form-control" name="price" placeholder="Add Price" required>
+                <input id="price" value="{{product.price}}" type="number" class="form-control" name="price" placeholder="Add Price" required>
             </div>
             <div class="form-group">
                 <label>Category</label>
-                <input id="category" value="{{this.category}}" type="text" class="form-control" name="category" placeholder="Add Category" required>
+                <input id="category" value="{{product.category}}" type="text" class="form-control" name="category" placeholder="Add Category" required>
             </div>
             <div class="form-group">
                 <label>Thumbnail</label>
-                <input id="photo" value="{{this.photo}}" type="text" class="form-control" name="thumbnail" placeholder="Add Thumbnail"
+                <input id="photo" value="{{product.photo}}" type="text" class="form-control" name="photo" placeholder="Add Thumbnail"
                     required>
             </div>
 
         <br>
-        <button id="submit" type="submit" class="btn btn-primary">Agregar Producto</button>
+        <button id="submit" type="submit" class="btn btn-primary">Update Product</button>
     </form>
 
 </div>

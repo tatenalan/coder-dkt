@@ -16,6 +16,10 @@ socket.on("newProduct", product => {
             <input type="hidden" name="photo" value="${product.photo}">
             <td><button type="submit" class="btn btn-primary">Add to cart</button></td>
         </form>
+        <td><button type="submit" onclick="window.location.href='/products/update/{{this.id}}';" class="btn btn-success">Update</button></td>
+      <form action="/products/{{this.id}}" method="POST">
+        <td><button type="submit" class="btn btn-danger">Delete</button></td>
+       </form>
     </tr>`)
 })
 
@@ -23,28 +27,12 @@ socket.on("error", () => {
     alert("Hubo un error")
 })
 
-$("#form-product").submit( e => {
+$("#form-product").submit(e => {
     e.preventDefault();
     createProduct()
 })
 
-$("#form-product").submit( e => {
-    e.preventDefault();
-    updateProduct()
-})
-
 function createProduct() {
-    let product = {
-        id: 0,
-        name: $("#name")[0].value,
-        price: $("#price")[0].value,
-        category: $("#category")[0].value,
-        photo: $("#photo")[0].value
-    }
-    socket.emit("newProduct", product);
-}
-
-function updateProduct() {
     let product = {
         id: 0,
         name: $("#name")[0].value,

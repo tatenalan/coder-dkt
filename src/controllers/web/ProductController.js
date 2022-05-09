@@ -50,23 +50,31 @@ class ProductController {
         console.log(req.params.id);
         ProductService.deleteById(req.params.id).then((response) => {
             console.log(response)
-            res.render('./messagesScreen/Success', { message: response.response, idUser: req.session.idUser })
+            res.render('./messagesScreen/Success', { message: response.response, username: req.session.username })
         }).catch(err => {
             console.log(err.error)
-            res.render('./messagesScreen/Error', { message: err.error, idUser: req.session.idUser })
+            res.render('./messagesScreen/Error', { message: err.error, username: req.session.username })
         })
     }
 
-    getUpdate = async (req, res) => {
-        console.log(req.params)
-        console.log(req.params.id)
+    edit = async (req, res) => {
         ProductService.getById(req.params.id).then(product => {
-            console.log(product)
-            res.render('./products/ProductUpdate', { product: product, idUser: req.session.idUser })
+            res.render('./products/ProductUpdate', { product: product, username: req.session.username })
         }).catch(err => {
             res.status(err.error)
-            res.json(err)
+            res.render('./messagesScreen/Error', { message: err.error, username: req.session.username })
         })
     }
+
+    update = async (req, res) => {
+        console.log(req.body);
+        ProductService.update(req.body).then(response => {
+            res.render('./messagesScreen/Success', { message: response.response, username: req.session.username })
+        }).catch(err => {
+            res.status(err.error)
+            res.render('./messagesScreen/Error', { message: err.error, username: req.session.username })
+        })
+    }
+    
 }
 export default new ProductController();
