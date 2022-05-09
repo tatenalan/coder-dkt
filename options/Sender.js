@@ -1,4 +1,4 @@
-// import { createTransport } from 'nodemailer';
+import { createTransport } from 'nodemailer';
 import twilio from "twilio";
 import ExceptionFactory from "../src/factory/ExceptionFactory.js"
 
@@ -16,7 +16,7 @@ const exceptionFactory = new ExceptionFactory();
 //     port: 587,
 //     auth: {
 //         user: 'taya.klein42@ethereal.email',
-//         pass: '12v4CwCqb1jnqEHQqK'
+//         pass: 'gwrpoqzhdfmxwfpz'
 //     },
 // });
 
@@ -48,14 +48,14 @@ const orderEmail = async (body) => {
     return response;
 }
 
-// const transporter = createTransport({
-//     host: 'smtp.gmail.com',
-//     port: 465,
-//     auth: {
-//         user: 'taten210@gmail.com',
-//         pass: 'kusqbbzstfomilfa'
-//     }
-// })
+const transporter = createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    auth: {
+        user: 'taten210@gmail.com',
+          pass: 'gwrpoqzhdfmxwfpz'
+    }
+})
 
 const sendEmail = async (subject, body) => {
     let mail = {
@@ -69,7 +69,7 @@ const sendEmail = async (subject, body) => {
     try {
         // let info = await transporter.sendMail(mail)
         console.log("ok")
-        console.log(info)
+        // console.log(info)
         return true
     }
     catch (error) {
