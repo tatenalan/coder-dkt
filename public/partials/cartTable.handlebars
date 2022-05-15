@@ -30,6 +30,11 @@
         <td>{{this.name}}</td>
         <td>${{this.price}}</td>
         <td><img style="width:50px;" src="{{this.photo}}" alt=""></td>
+        <td style="display:flex;justify-content: center;">
+          <form action="/products/{{this.id}}" method="POST">
+            <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" class="btn btn-danger">Delete</button></td>
+          </form>
+        </td>
       </tr>
       {{/each}}
       {{else}}
