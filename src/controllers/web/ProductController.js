@@ -7,7 +7,7 @@ class ProductController {
         ProductService.getAll().then(products => {
             res.render("./products/ProductMain", {
                 productList: products, username: req.session.username,
-                categories: _.uniqBy(products, 'category').map((product) => { return product.category })
+                categories: _.uniqBy(products, 'category').map((product) => { return product.category.charAt(0).toUpperCase() + product.category.slice(1) })
             })
         }).catch(err => {
             if (err.error == 404)

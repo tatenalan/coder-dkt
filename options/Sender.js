@@ -3,7 +3,7 @@ import twilio from "twilio";
 import ExceptionFactory from "../src/factory/ExceptionFactory.js"
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID || "AC795bc029cf78d374baf92dbc627e149a";
-const authToken = process.env.TWILIO_AUTH_TOKEN || "2a511a340ef8350cf4126f9e69510f36";
+const authToken = process.env.TWILIO_AUTH_TOKEN || "5d9f86ef152d7aef57c8d567fceca5be";
 const client = twilio(accountSid, authToken);
 const TEST_MAIL = process.env.ADMINEMAIL || "lisandrorp1997@gmail.com";
 const TEST_NUMBER = process.env.ADMINNUMBER || "+5491144373492";
@@ -53,7 +53,7 @@ const transporter = NodeMailer.createTransport({
     port: 465,
     auth: {
         user: 'taten210@gmail.com',
-          pass: 'gwrpoqzhdfmxwfpz'
+        pass: 'gwrpoqzhdfmxwfpz'
     }
 })
 
@@ -67,8 +67,8 @@ const sendEmail = async (subject, body) => {
         html: body, // html body
     }
     try {
-        // let info = await transporter.sendMail(mail)
-        console.log("ok")
+        let info = await transporter.sendMail(mail)
+        console.log(info)
         return true
     }
     catch (error) {
@@ -81,7 +81,7 @@ const sendEmail = async (subject, body) => {
 const sendWpp = async (body) => {
     client.messages.create({
             from: 'whatsapp:+14155238886',
-            to: 'whatsapp:+5491144373492',
+            to: 'whatsapp:'+ TEST_NUMBER,
             body: body,
             //mediaUrl: "Hello world?", 
         })

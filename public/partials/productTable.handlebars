@@ -6,7 +6,7 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       {{#each categories}}
-          <a class="dropdown-item" href="/products/{{this}}">{{this}}</a>
+      <a class="dropdown-item" href="/products/{{this}}">{{this}}</a>
       {{/each}}
     </div>
   </div>
@@ -14,7 +14,7 @@
   <br>
   <table class="table bg-white">
     <thead>
-      <tr>
+      <tr style="text-align:center;">
         <th scope="col">id</th>
         <th scope="col">Titulo</th>
         <th scope="col">Precio</th>
@@ -24,7 +24,7 @@
     </thead>
     <tbody id="table">
       {{#each productList}}
-      <tr style="text-align:center;">
+      <tr>
         <th scope="row">{{this.id}}</th>
         <td>{{this.name}}</td>
         <td>${{this.price}}</td>
@@ -35,12 +35,15 @@
           <input type="hidden" name="price" value="{{this.price}}">
           <input type="hidden" name="description" value="{{this.description}}">
           <input type="hidden" name="photo" value="{{this.photo}}">
-          <td style="display: flex;white-space: nowrap;"><button style="margin: 0 10px;" type="submit" class="btn btn-primary">Add to cart</button>
+          <td style="display: flex;white-space: nowrap;">
+            <button style="margin: 0 10px;" type="submit" class="btn btn-primary">Add to cart</button>
         </form>
-          <button style="margin: 0 10px;white-space: nowrap;" type="submit" onclick="window.location.href='/products/update/{{this.id}}';" class="btn btn-success">Update</button>
+        <button style="margin: 0 10px;white-space: nowrap;" type="submit"
+          onclick="window.location.href='/products/update/{{this.id}}';" class="btn btn-success">Update</button>
         <form action="/products/{{this.id}}" method="POST">
-          <button style="margin: 0 10px;white-space: nowrap;" type="submit" class="btn btn-danger">Delete</button></td>
-         </form>
+          <button style="margin: 0 10px;white-space: nowrap;" type="submit" class="btn btn-danger">Delete</button>
+          </td>
+        </form>
       </tr>
       {{/each}}
     </tbody>
