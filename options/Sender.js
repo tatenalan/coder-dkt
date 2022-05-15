@@ -1,4 +1,4 @@
-import { createTransport } from 'nodemailer';
+import NodeMailer from 'nodemailer';
 import twilio from "twilio";
 import ExceptionFactory from "../src/factory/ExceptionFactory.js"
 
@@ -48,7 +48,7 @@ const orderEmail = async (body) => {
     return response;
 }
 
-const transporter = createTransport({
+const transporter = NodeMailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     auth: {
