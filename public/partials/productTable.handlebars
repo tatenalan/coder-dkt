@@ -35,15 +35,12 @@
           <input type="hidden" name="price" value="{{this.price}}">
           <input type="hidden" name="description" value="{{this.description}}">
           <input type="hidden" name="photo" value="{{this.photo}}">
-          <td style="display: flex;white-space: nowrap;">
-            <button style="margin: 0 10px;" type="submit" class="btn btn-primary">Add to cart</button>
+          <td style="display:flex;justify-content: center;"><button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" class="btn btn-primary">Add to cart</button>
         </form>
-        <button style="margin: 0 10px;white-space: nowrap;" type="submit"
-          onclick="window.location.href='/products/update/{{this.id}}';" class="btn btn-success">Update</button>
+          <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" onclick="window.location.href='/products/update/{{this.id}}';" class="btn btn-success">Update</button>
         <form action="/products/{{this.id}}" method="POST">
-          <button style="margin: 0 10px;white-space: nowrap;" type="submit" class="btn btn-danger">Delete</button>
-          </td>
-        </form>
+          <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" class="btn btn-danger">Delete</button></td>
+         </form>
       </tr>
       {{/each}}
     </tbody>
