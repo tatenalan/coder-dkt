@@ -15,20 +15,22 @@
   <table class="table bg-white">
     <thead>
       <tr style="text-align:center;">
-        <th scope="col">id</th>
+        {{!-- <th scope="col">id</th> --}}
         <th scope="col">Titulo</th>
         <th scope="col">Precio</th>
         <th scope="col">Thumbnail</th>
+        <th scope="col">Cantidad</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody id="table">
       {{#each productList}}
-      <tr onclick="window.location.href='/products/{{this.id}}';" >
-        <th scope="row">{{this.id}}</th>
-        <td>{{this.name}}</td>
+      <tr>
+        {{!-- <th scope="row">{{this.id}}</th> --}}
+        <td style="cursor:pointer;" onclick="window.location.href='/products/{{this.id}}';">{{this.name}}</td>
         <td>${{this.price}}</td>
         <td><img style="width:50px;" src="{{this.photo}}" alt=""></td>
+        <td><input style="width:100px;" name="quantity" type="number"></td>
         <td style="display:flex;justify-content: center;">
           <form action="/cart/addToCart" method="post">
             <input type="hidden" name="id" value="{{this.id}}">

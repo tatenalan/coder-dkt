@@ -26,6 +26,7 @@
         <th scope="col">Titulo</th>
         <th scope="col">Precio</th>
         <th scope="col">Thumbnail</th>
+        <th scope="col">Quantity</th>
         <th scope="col">{{idCart}}</th>
       </tr>
     </thead>
@@ -36,6 +37,7 @@
         <td>{{this.name}}</td>
         <td>${{this.price}}</td>
         <td><img style="width:50px;" src="{{this.photo}}" alt=""></td>
+        <td>{{this.quantity}}</td>
         <form action="/cart/removeProduct/{{idCart}}" method="POST">
           <td style="display:flex;justify-content: center;">
             <input hidden name="idProduct" value="{{id}}" />
