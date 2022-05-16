@@ -50,14 +50,16 @@ class CartWebController {
 
     sendOrder = async (req, res) => {
         let subject = `Nuevo pedido de ${req.session.name}, email: ${req.session.email}`
-        OrderService.save(req.body.products, req.session.email).then(async () => {
-            sendEmail(subject, await orderEmail(req.body.products)).then((response) => {
-                sendWpp(subject).then((response) => { 
-                    res.render('./messagesScreen/Success', {message: "Se está procesando su pedido", username: req.session.username})
-                 }).catch(err => {
-                    res.status(err.error)
-                    res.json(err)
-                })
+        OrderService.getAll().then((orders)=> {
+            OrderService.save(req.body.products, req.session.email, orders?.length).then(async () => {
+                sendEmail(subject, await orderEmail(req.body.products)).then((response) => {
+                    sendWpp(subject).then((response) => { 
+                        res.render('./messagesScreen/Success', {message: "Se está procesando su pedido", username: req.session.username})
+                     }).catch(err => {
+                        res.status(err.error)
+                        res.json(err)
+                    })
+            })
         })
         }).catch(err => {
             res.status(err.error)

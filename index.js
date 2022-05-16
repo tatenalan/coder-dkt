@@ -11,6 +11,7 @@ import { chatWebRouter } from "./src/routers/web/ChatWebRouter.js";
 import { generalWebRouter } from "./src/routers/web/GeneralWebRouter.js";
 import { cartWebRouter } from "./src/routers/web/CartWebRouter.js";
 import { infoWebRouter } from "./src/routers/web/InfoWebRouter.js";
+import { orderWebRoute } from "./src/routers/web/OrderWebRoute.js";
 
 import express from 'express'
 import bodyParser from 'body-parser'
@@ -100,6 +101,7 @@ app.use(session({
 app.use('/api/products', productRouter);
 app.use('/api/messages', messageRouter);
 app.use('/api/carts', cartRouter);
+app.use('/orders', orderWebRoute);
 app.use('/products', productWebRouter);
 app.use('/chat', chatWebRouter);
 app.use('/cart', cartWebRouter);
