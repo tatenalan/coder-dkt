@@ -40,6 +40,7 @@ class ProductController {
 
     removeAll = async (req, res) => {
         let idCart = req.params.id;
+        console.log(idCart);
         CartService.deleteAllProductsByIdCart(idCart).then((response) => {
             console.log(response)
             res.render('./messagesScreen/Success', {message: response.response, username: req.session.username})

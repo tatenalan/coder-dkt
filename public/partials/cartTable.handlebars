@@ -2,16 +2,22 @@
   {{#if productList}}
   <div>
     <h5 class="primary text-center">Lista de productos</h5>
-    <form action="/cart/sendOrder" method="post">
-      <input type="hidden" id="idCart" name="id" value="{{idCart}}">
-      {{#each productList}}
-      {{#each this}}
-      <input type="hidden" name="products[]" value="{{this}}">
-      {{/each}}
-      {{/each}}
-      <td><button type="submit" class="btn btn-primary">Send Order</button></td>
-    </form>
+    <div style="justify-content: space-between; flex-direction: row;">
+      <form style="float: left;" action="/cart/sendOrder" method="post">
+        <input type="hidden" id="idCart" name="id" value="{{idCart}}">
+        {{#each productList}}
+        {{#each this}}
+        <input type="hidden" name="products[]" value="{{this}}">
+        {{/each}}
+        {{/each}}
+        <button type="submit" class="btn btn-primary">Send Order</button>
+      </form>
+      <form style="float: right;" action="/cart/removeAll/{{this.idCart}}" method="post">
+          <button class="btn btn-danger">Delete All</button>
+      </form>
+    </div>
   </div>
+  <br>
   <br>
   <table class="table bg-white">
     <thead>
@@ -31,12 +37,11 @@
         <td>${{this.price}}</td>
         <td><img style="width:50px;" src="{{this.photo}}" alt=""></td>
         <form action="/cart/removeProduct/{{idCart}}" method="POST">
-        <td style="display:flex;justify-content: center;">
-          <input hidden name="idProduct" value="{{id}}"/>
-          <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit"
-            class="btn btn-danger">Delete
-          </button>
-        </td>
+          <td style="display:flex;justify-content: center;">
+            <input hidden name="idProduct" value="{{id}}" />
+            <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" class="btn btn-danger">Delete
+            </button>
+          </td>
         </form>
         </td>
       </tr>

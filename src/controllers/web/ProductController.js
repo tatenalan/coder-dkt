@@ -19,7 +19,7 @@ class ProductController {
         })
     }
 
-    getById = async (req, res) => {
+    getByIdCategory = async (req, res) => {
         ProductService.getAll().then(products => {
             console.log(products.filter((product) => _.isEqual(product.category, req.params.category)));
             res.render("./categories/CategoriesMain", { productList: products.filter((product) => _.isEqual(product.category, req.params.category)), username: req.session.username })
@@ -34,16 +34,10 @@ class ProductController {
     }
 
     getById = async (req, res) => {
-        ProductService.getById(req.params.id).then(products => {
-            console.log(products.filter((product) => _.isEqual(product.category, req.params.category)));
-            res.render("./categories/CategoriesMain", { productList: products.filter((product) => _.isEqual(product.category, req.params.category)), username: req.session.username })
+        ProductService.getById(req.params.id).then(product => {
+            res.render('./products/ProductDetails', { product: product, username: req.session.username })
         }).catch(err => {
-            if (err.error == 404)
-                res.render("./categories/CategoriesMain", { productList: products.filter((product) => _.isEqual(product.category, req.params.category)), username: req.session.username })
-            else {
-                res.status(err.error)
-                res.json(err)
-            }
+            res.render('./messagesScreen/Error', { message: err.description, username: req.session.username })
         })
     }
 
@@ -67,7 +61,7 @@ class ProductController {
             res.render('./messagesScreen/Success', { message: response.response, username: req.session.username })
         }).catch(err => {
             console.log(err.error)
-            res.render('./messagesScreen/Error', { message: err.error, username: req.session.username })
+            res.render('./messagesScreen/Error', { message: err.description, username: req.session.username })
         })
     }
 
@@ -76,7 +70,7 @@ class ProductController {
             res.render('./products/ProductUpdate', { product: product, username: req.session.username })
         }).catch(err => {
             res.status(err.error)
-            res.render('./messagesScreen/Error', { message: err.error, username: req.session.username })
+            res.render('./messagesScreen/Error', { message: err.description, username: req.session.username })
         })
     }
 
@@ -86,7 +80,7 @@ class ProductController {
             res.render('./messagesScreen/Success', { message: response.response, username: req.session.username })
         }).catch(err => {
             res.status(err.error)
-            res.render('./messagesScreen/Error', { message: err.error, username: req.session.username })
+            res.render('./messagesScreen/Error', { message: err.description, username: req.session.username })
         })
     }
     

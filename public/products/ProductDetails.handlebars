@@ -1,0 +1,30 @@
+{{> navBar}}
+<div class="bd-example bg-light mt-5 p-5 shadow rounded w-50 mx-auto">
+    <h5>Product Details</h5>
+    <br>
+    <form id="form-product" method="post" action="/products/update/{{product.id}}">
+        <input id="id" value="{{product.id}}" type="hidden" name="id">
+        <div class="form-group">
+            <label>Name</label>
+            <input readonly id="name" value="{{product.name}}" type="text" class="form-control" name="name"
+                placeholder="Add Title" required autofocus>
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input readonly id="price" value="{{product.price}}" type="number" class="form-control" name="price"
+                placeholder="Add Price" required>
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <input readonly id="category" value="{{product.category}}" type="text" class="form-control" name="category"
+                placeholder="Add Category" required>
+        </div>
+        <label>Thumnail</label>
+        <br>
+        <div>
+            <img style="width:250px;" src="{{product.photo}}" alt="">
+        </div>
+        <br>
+    </form>
+
+</div>

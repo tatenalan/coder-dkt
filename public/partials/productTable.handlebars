@@ -10,7 +10,7 @@
       {{/each}}
     </div>
   </div>
-  <h5 class="primary text-center">Lista de productos</h5>
+  <h5 class="primary text-center">Product List</h5>
   <br>
   <table class="table bg-white">
     <thead>
@@ -24,7 +24,7 @@
     </thead>
     <tbody id="table">
       {{#each productList}}
-      <tr>
+      <tr onclick="window.location.href='/products/{{this.id}}';" >
         <th scope="row">{{this.id}}</th>
         <td>{{this.name}}</td>
         <td>${{this.price}}</td>
@@ -40,7 +40,9 @@
               cart</button>
           </form>
           <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit"
-            onclick="window.location.href='/products/update/{{this.id}}';" class="btn btn-success">Update</button>
+            onclick="window.location.href='/products/update/{{this.id}}';" class="btn btn-success">
+            Update
+          </button>
           <form action="/products/{{this.id}}" method="POST">
             <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit"
               class="btn btn-danger">Delete</button>
