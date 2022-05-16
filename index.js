@@ -13,6 +13,7 @@ import { cartWebRouter } from "./src/routers/web/CartWebRouter.js";
 import { infoWebRouter } from "./src/routers/web/InfoWebRouter.js";
 
 import express from 'express'
+import bodyParser from 'body-parser'
 import handlebars from 'express-handlebars'
 import session from 'express-session'
 import sessionFile from 'session-file-store'
@@ -70,6 +71,7 @@ const io = new Server(httpServer)
 const socket = new Socket(io)
 
 app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('./public'));
 
