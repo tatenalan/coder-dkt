@@ -1,0 +1,15 @@
+{{> navBar}}
+
+<div class="container">
+    {{#each orders}}
+        <div class="mr-auto bg-light p-5 shadow">
+            <h5 class="primary text-center">Order details:</h5>
+            <b>Number:</b> {{this.order_number}}
+            <br>
+            <b>Status:</b> {{this.status}}
+            <br>
+            <b>Date:</b> {{this.create_at}}
+            <br>
+        </div>
+    {{/each}}
+</div>
