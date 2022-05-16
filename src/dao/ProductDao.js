@@ -15,7 +15,6 @@ class ProductDao {
     }
 
     save(product) {
-        console.log(product)
         return this.coleccion.create(product)
     }
 

@@ -4,7 +4,7 @@
     <h5 class="primary text-center">Lista de productos</h5>
     <div style="justify-content: space-between; flex-direction: row;">
       <form style="float: left;" action="/cart/sendOrder" method="post">
-        <input type="hidden" id="idCart" name="id" value="{{idCart}}">
+        <input type="hidden" id="idCart" name="idCart" value="{{this.idCart}}">
         {{#each productList}}
         {{#each this}}
         <input type="hidden" name="products[]" value="{{this}}">
@@ -13,7 +13,7 @@
         <button type="submit" class="btn btn-primary">Send Order</button>
       </form>
       <form style="float: right;" action="/cart/removeAll/{{this.idCart}}" method="post">
-          <button class="btn btn-danger">Delete All</button>
+        <button class="btn btn-danger">Delete All</button>
       </form>
     </div>
   </div>

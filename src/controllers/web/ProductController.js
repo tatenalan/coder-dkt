@@ -57,7 +57,6 @@ class ProductController {
     deleteById = (req, res) => {
         console.log(req.params.id);
         ProductService.deleteById(req.params.id).then((response) => {
-            console.log(response)
             res.render('./messagesScreen/Success', { message: response.response, username: req.session.username })
         }).catch(err => {
             console.log(err.error)
