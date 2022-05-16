@@ -6,7 +6,8 @@ class CartWebController {
 
     getCart = async (req, res) => {
         CartService.getByIdUser(req.session.idUser).then(cart => {
-            res.render("./cart/CartMain", {productList: cart.products.map((product)=> ({...product, idCart: cart.id})), username: req.session.username, idCart: cart.id})
+            console.log(cart.products)
+            res.render("./cart/CartMain", {productList: cart.products.map((product)=> ({...product, idCart: cart.id})), username: req.session.username, address: req.session.address, idCart: cart.id})
         }).catch(err => {
             if(err.error == 404)
                 res.render("./cart/CartMain", {productList: [], username: req.session.username})

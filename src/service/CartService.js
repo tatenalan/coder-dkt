@@ -55,8 +55,9 @@ class CartService extends CartDao {
             .catch((error) => { console.log(error); throw exceptionFactory.throwException(error.error, "No se pudieron traer los productos", error.message) })
     }
 
-    async save(idUser) {
+    async save(idUser, address) {
         let cart = new Cart(idUser)
+        cart.address = address
         return super.save(cart)
             .then((result) => { console.log("Producto Creado"); return renameField(asPOJO(result), '_id', 'id') })
             .catch((error) => { console.log(error); throw exceptionFactory.throwException(error.error, "No se pudo crear el carrito", error.message) })

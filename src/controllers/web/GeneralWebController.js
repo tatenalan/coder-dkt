@@ -77,7 +77,7 @@ class GeneralWebController {
         UserService.verifyUsername(username).then(user => {
             if(!user){
                 UserService.save(email, username, name, address, age, phone, this.createHash(password), avatar).then((user) => {
-                    CartService.save(user.id).then(async () => {
+                    CartService.save(user.id, user.address).then(async () => {
                         sendEmail("Nuevo Registro", await welcomeEmail(req.body)).then((response) => {
                             if (response)
                                 res.render('./messagesScreen/Success', {message: "Usuario " + username + " Creado existosamente"})
