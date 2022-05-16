@@ -30,7 +30,7 @@
         <td style="cursor:pointer;" onclick="window.location.href='/products/{{this.id}}';">{{this.name}}</td>
         <td>${{this.price}}</td>
         <td><img style="width:50px;" src="{{this.photo}}" alt=""></td>
-        <td><input style="width:100px;" name="quantity" type="number"></td>
+        <td><input style="width:100px;" value="1" id="quantity{{id}}" name="quantity" onchange="changeValue(this)" type="number"></td>
         <td style="display:flex;justify-content: center;">
           <form action="/cart/addToCart" method="post">
             <input type="hidden" name="id" value="{{this.id}}">
@@ -38,6 +38,7 @@
             <input type="hidden" name="price" value="{{this.price}}">
             <input type="hidden" name="description" value="{{this.description}}">
             <input type="hidden" name="photo" value="{{this.photo}}">
+            <input type="hidden" id="form-quantity{{id}}" name="quantity" value="1">
             <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" class="btn btn-primary">Add to
               cart</button>
           </form>
@@ -55,3 +56,11 @@
     </tbody>
   </table>
 </div>
+<script>
+
+function changeValue(selectObject) {
+  var value = selectObject.value;
+  var quantityForm = document.getElementById('form-'+selectObject.id)
+  quantityForm.value = value;
+}
+</script>

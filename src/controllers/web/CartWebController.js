@@ -17,6 +17,7 @@ class ProductController {
         })
     }
     addProduct = async (req, res) => {
+        req.body.quantity = (req.body?.quantity) || 1;
         CartService.addProduct(req.session.idUser, req.body).then((response) => {
             console.log(response)
             res.render('./messagesScreen/Success', {message: response.response, username: req.session.username})
@@ -40,7 +41,6 @@ class ProductController {
 
     removeAll = async (req, res) => {
         let idCart = req.params.id;
-        console.log(idCart);
         CartService.deleteAllProductsByIdCart(idCart).then((response) => {
             console.log(response)
             res.render('./messagesScreen/Success', {message: response.response, username: req.session.username})

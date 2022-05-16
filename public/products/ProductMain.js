@@ -4,13 +4,12 @@ const socket = io();
 socket.on("newProduct", product => {
     $("#table").append(`
     <tr>
-        <th scope="row">${product.id}</th>
         <td>${product.name}</td>
         <td>$${product.price}</td>
         <td><img style="width:50px;" src="${product.photo}" alt=""></td>
+        <td><input style="width:100px;" name="quantity" type="number"></td>
         <td style="display:flex;justify-content: center;">
         <form action="/cart/addToCart" method="POST">
-            <input type="hidden" name="id" value="${product.id}">
             <input type="hidden" name="name" value="${product.name}">
             <input type="hidden" name="price" value="${product.price}">
             <input type="hidden" name="description" value="${product.description}">

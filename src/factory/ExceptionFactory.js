@@ -6,8 +6,6 @@ import Exception from '../exceptions/Exception.js'
 class ExceptionFactory {
 
     throwException(error, description, message) {
-        console.log("$$$$$$$$$$$$$$$$$")
-        console.log(error, description, message)
         if (error == 401)
             return new AuthenticationException(error, description, message)
         if (error == 403)
