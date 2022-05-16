@@ -9,4 +9,8 @@ cartWebRouter.post('/addToCart', CartWebController.addProduct)
 
 cartWebRouter.post('/sendOrder', CartWebController.sendOrder)
 
+cartWebRouter.post('/removeProduct/:id', CartWebController.removeProduct)
+
+cartWebRouter.post('/removeAll', CartWebController.removeAll)
+
 export { cartWebRouter };

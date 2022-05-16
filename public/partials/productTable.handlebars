@@ -6,7 +6,7 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       {{#each categories}}
-      <a class="dropdown-item" href="/products/{{this}}">{{this}}</a>
+      <a class="dropdown-item" href="/products/category/{{this}}">{{this}}</a>
       {{/each}}
     </div>
   </div>
@@ -29,18 +29,23 @@
         <td>{{this.name}}</td>
         <td>${{this.price}}</td>
         <td><img style="width:50px;" src="{{this.photo}}" alt=""></td>
-        <form action="/cart/addToCart" method="post">
-          <input type="hidden" name="id" value="{{this.id}}">
-          <input type="hidden" name="name" value="{{this.name}}">
-          <input type="hidden" name="price" value="{{this.price}}">
-          <input type="hidden" name="description" value="{{this.description}}">
-          <input type="hidden" name="photo" value="{{this.photo}}">
-          <td style="display:flex;justify-content: center;"><button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" class="btn btn-primary">Add to cart</button>
-        </form>
-          <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" onclick="window.location.href='/products/update/{{this.id}}';" class="btn btn-success">Update</button>
-        <form action="/products/{{this.id}}" method="POST">
-          <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" class="btn btn-danger">Delete</button></td>
-         </form>
+        <td style="display:flex;justify-content: center;">
+          <form action="/cart/addToCart" method="post">
+            <input type="hidden" name="id" value="{{this.id}}">
+            <input type="hidden" name="name" value="{{this.name}}">
+            <input type="hidden" name="price" value="{{this.price}}">
+            <input type="hidden" name="description" value="{{this.description}}">
+            <input type="hidden" name="photo" value="{{this.photo}}">
+            <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" class="btn btn-primary">Add to
+              cart</button>
+          </form>
+          <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit"
+            onclick="window.location.href='/products/update/{{this.id}}';" class="btn btn-success">Update</button>
+          <form action="/products/{{this.id}}" method="POST">
+            <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit"
+              class="btn btn-danger">Delete</button>
+          </form>
+        </td>
       </tr>
       {{/each}}
     </tbody>

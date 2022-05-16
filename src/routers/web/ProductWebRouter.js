@@ -6,7 +6,9 @@ const productWebRouter = express.Router();
 
 productWebRouter.get('/', ProductController.getAll);
 
-productWebRouter.get('/:category', ProductController.getByCategory);
+productWebRouter.get('/:id', ProductController.getProduct);
+
+productWebRouter.get('/category/:category', ProductController.getByCategory);
 
 productWebRouter.post('/:id', ProductController.deleteById);
 

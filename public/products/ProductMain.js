@@ -8,19 +8,23 @@ socket.on("newProduct", product => {
         <td>${product.name}</td>
         <td>$${product.price}</td>
         <td><img style="width:50px;" src="${product.photo}" alt=""></td>
-        <form action="/cart/addToCart" method="post">
+        <td style="display:flex;justify-content: center;">
+        <form action="/cart/addToCart" method="POST">
             <input type="hidden" name="id" value="${product.id}">
             <input type="hidden" name="name" value="${product.name}">
             <input type="hidden" name="price" value="${product.price}">
             <input type="hidden" name="description" value="${product.description}">
             <input type="hidden" name="photo" value="${product.photo}">
-            <td><button type="submit" class="btn btn-primary">Add to cart</button></td>
+            <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" class="btn btn-primary">
+                Add to cart
+            </button>
         </form>
-        <td><button type="submit" onclick="window.location.href='/products/update/{{this.id}}';" class="btn btn-success">Update</button></td>
-      <form action="/products/{{this.id}}" method="POST">
-        <td><button type="submit" class="btn btn-danger">Delete</button></td>
-       </form>
-    </tr>`)
+              <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" onclick="window.location.href='/products/update/${product.id}';" class="btn btn-success">Update</button>
+            <form action="/products/${product.id}" method="POST">
+              <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" class="btn btn-danger">Delete</button>
+             </form>
+             </td>
+          </tr>`)
 })
 
 socket.on("error", () => {

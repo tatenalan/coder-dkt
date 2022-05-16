@@ -3,11 +3,11 @@
   <div>
     <h5 class="primary text-center">Lista de productos</h5>
     <form action="/cart/sendOrder" method="post">
-      <input type="hidden" name="id" value="{{id}}">
+      <input type="hidden" id="idCart" name="id" value="{{idCart}}">
       {{#each productList}}
-            {{#each this}}
-                  <input type="hidden" name="products[]" value="{{this}}">
-            {{/each}}
+      {{#each this}}
+      <input type="hidden" name="products[]" value="{{this}}">
+      {{/each}}
       {{/each}}
       <td><button type="submit" class="btn btn-primary">Send Order</button></td>
     </form>
@@ -20,7 +20,7 @@
         <th scope="col">Titulo</th>
         <th scope="col">Precio</th>
         <th scope="col">Thumbnail</th>
-        <th scope="col">Actions</th>
+        <th scope="col">{{idCart}}</th>
       </tr>
     </thead>
     <tbody id="table">
@@ -30,10 +30,14 @@
         <td>{{this.name}}</td>
         <td>${{this.price}}</td>
         <td><img style="width:50px;" src="{{this.photo}}" alt=""></td>
+        <form action="/cart/removeProduct/{{idCart}}" method="POST">
         <td style="display:flex;justify-content: center;">
-          <form action="/products/{{this.id}}" method="POST">
-            <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit" class="btn btn-danger">Delete</button></td>
-          </form>
+          <input hidden name="idProduct" value="{{id}}"/>
+          <button style="margin: 0 10px;white-space: nowrap;width:106px" type="submit"
+            class="btn btn-danger">Delete
+          </button>
+        </td>
+        </form>
         </td>
       </tr>
       {{/each}}

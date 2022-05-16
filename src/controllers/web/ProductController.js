@@ -11,7 +11,7 @@ class ProductController {
             })
         }).catch(err => {
             if (err.error == 404)
-                res.render("./products/ProductMain", { productList: [], username: req.session.username, categories: products.map((product) => { return product.category }) })
+                res.render("./products/ProductMain", { productList: [], username: req.session.username, categories: [] })
             else {
                 res.status(err.error)
                 res.json(err)
@@ -19,8 +19,22 @@ class ProductController {
         })
     }
 
-    getByCategory = async (req, res) => {
+    getById = async (req, res) => {
         ProductService.getAll().then(products => {
+            console.log(products.filter((product) => _.isEqual(product.category, req.params.category)));
+            res.render("./categories/CategoriesMain", { productList: products.filter((product) => _.isEqual(product.category, req.params.category)), username: req.session.username })
+        }).catch(err => {
+            if (err.error == 404)
+                res.render("./categories/CategoriesMain", { productList: products.filter((product) => _.isEqual(product.category, req.params.category)), username: req.session.username })
+            else {
+                res.status(err.error)
+                res.json(err)
+            }
+        })
+    }
+
+    getById = async (req, res) => {
+        ProductService.getById(req.params.id).then(products => {
             console.log(products.filter((product) => _.isEqual(product.category, req.params.category)));
             res.render("./categories/CategoriesMain", { productList: products.filter((product) => _.isEqual(product.category, req.params.category)), username: req.session.username })
         }).catch(err => {
